@@ -45,7 +45,10 @@ public class ProductData {
         jdbcTemplate.execute("update shop.product set price="+price+" where id='"+id+"'");
         return "Product changed";
     }
-
+    public static String createProduct(JdbcTemplate jdbcTemplate, String name, String categoryId, String price){
+        jdbcTemplate.execute("insert into shop.product values(null,'"+name+"',"+categoryId+","+price+",)");
+        return "Product created";
+    }
     //This method send a request to select the user with a specific id and to see if it exists
     public static boolean checkIfProductExists(JdbcTemplate jdbcTemplate,String id){
         Product product=ProductUtility.getProduct(jdbcTemplate,id);

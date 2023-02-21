@@ -30,4 +30,12 @@ public class ProductUtility {
         return null;
     }
 
+    public static List<Product> getAllProductsByCategory(JdbcTemplate jdbcTemplate , String categoryId){
+        return jdbcTemplate.query("select * from shop.product where categoryId="+categoryId+"",(rs, rowNum) ->
+                new Product(rs.getInt("id"),
+                        rs.getString("name"),
+                        rs.getInt("categoryId"),
+                        rs.getDouble("price"))
+        );
+    }
 }
