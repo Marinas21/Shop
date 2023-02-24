@@ -19,3 +19,15 @@ CREATE TABLE `shop`.`category` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(45) NULL,
   PRIMARY KEY (`id`));
+
+CREATE TABLE `shop`.`cart` (
+  `id` INT NOT NULL,
+  `userId` INT NULL,
+  PRIMARY KEY (`id`));
+  
+CREATE TABLE `shop`.`item` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `cartId` VARCHAR(45) NULL,
+  `productId` VARCHAR(45) NULL,
+  `cuantity` VARCHAR(45) NULL,
+  PRIMARY KEY (`id`));
