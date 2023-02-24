@@ -40,6 +40,7 @@ public class UserUtility {
         }
     }
 
+    //this methode send a request to the databse to see if there is a user with a specific mail and password
     public static User checkIfUserExistByMailAndPassword(JdbcTemplate jdbcTemplate, String mail, String password){
         List<User> user= jdbcTemplate.query("select * from shop.users where email= '"+mail+"' and password= '"+password+"'",(rs, rowNum) ->
                 new User(

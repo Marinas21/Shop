@@ -2,7 +2,6 @@ package com.Andrei.ShopWebService.User;
 
 import org.springframework.jdbc.core.JdbcTemplate;
 
-import java.util.List;
 //This class represents all the communications with the database on a specific user
 public class UserData {
 

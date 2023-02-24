@@ -19,7 +19,7 @@ public class ProductData {
         return "Product deleted";
     }
 
-    //We check if the user exist and after that send a request to delete it's name
+    //We check if the user exist and after that send a request to change the name
     public static String changeProductName(JdbcTemplate jdbcTemplate,String id,String newName){
         if(checkIfProductExists(jdbcTemplate,id)){
             return "Product does not exist";
@@ -28,7 +28,7 @@ public class ProductData {
         return "Product changed";
     }
 
-    //We check if the user exist and after that send a request to delete it's category
+    //We check if the user exist and after that send a request to change the category
     public static String changeProductCategory(JdbcTemplate jdbcTemplate,String id,String categoryId){
         if(checkIfProductExists(jdbcTemplate,id)){
             return "Product does not exist";
@@ -37,7 +37,7 @@ public class ProductData {
         return "Product changed";
     }
 
-    //We check if the user exist and after that send a request to delete it's price
+    //We check if the user exist and after that send a request to change the price
     public static String changeProductPrice(JdbcTemplate jdbcTemplate,String id,String price){
         if(checkIfProductExists(jdbcTemplate,id)){
             return "Product does not exist";
@@ -45,6 +45,7 @@ public class ProductData {
         jdbcTemplate.execute("update shop.product set price="+price+" where id='"+id+"'");
         return "Product changed";
     }
+    //this methode it's responsible with sending a request to the database to save a new product
     public static String createProduct(JdbcTemplate jdbcTemplate, String name, String categoryId, String price){
         jdbcTemplate.execute("insert into shop.product values(null,'"+name+"',"+categoryId+","+price+",)");
         return "Product created";

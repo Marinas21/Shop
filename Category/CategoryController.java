@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
+//This class it's responsible for all the listeners which involves the concept of category
 @Controller
 public class CategoryController {
     //On this line we create a new object that will help us in the future with the database connection
@@ -19,16 +20,19 @@ public class CategoryController {
         this.jdbcTemplate=jdbcTemplate;
     }
 
+    //here we send a request to get all the categories and return a list
     @GetMapping("/getCategorys")
     public List<Category> getAllCategorys(){
         return CategoryUtility.getAllCategorys(jdbcTemplate);
     }
 
+    //here we send a request to return a specific category based on id
     @GetMapping("/getCategory")
     public Category getCategoryById(@RequestParam(name="id")String id){
         return CategoryUtility.getCategoryById(jdbcTemplate,id);
     }
 
+    //here we send a request to delete a specific category based on id
     @GetMapping("/deleteCategory")
     public String deleteCategory(@RequestParam(name="id")String id){
         Category category=getCategoryById(id);
@@ -39,7 +43,9 @@ public class CategoryController {
         return "Category does not exists";
     }
 
-    @GetMapping("/deleteCategory")
+    //here we send a request to create a category with a specific name, but first we must see if the category
+    //already exist
+    @GetMapping("/createCategory")
     public String createCategory(@RequestParam(name="name")String name){
         Category category=CategoryUtility.getCategoryByName(jdbcTemplate,name);
         if(category==null){
@@ -49,6 +55,7 @@ public class CategoryController {
         return "Category does exists";
     }
 
+    //here we send a request to change a category name, but first we must see if that name it's in use
     public String updateCategoryName(@RequestParam(name="name")String name,@RequestParam(name="id")String id){
         Category category=CategoryUtility.getCategoryByName(jdbcTemplate,name);
         if(category==null){
