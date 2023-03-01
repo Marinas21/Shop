@@ -1,5 +1,7 @@
 package com.Andrei.ShopWebService.Cart;
 
+//This class it's a template for Cart
+//Cart-placeholer for items that users might want to buy
 public class Cart {
 
     private int id;
