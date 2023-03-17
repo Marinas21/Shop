@@ -22,7 +22,7 @@ public class UserUtility {
         return list;
     }
     //This method check if there are users that have a specific mail
-    public static Boolean checkIfUserExistByMail(JdbcTemplate jdbcTemplate, String mail){
+    public static User checkIfUserExistByMail(JdbcTemplate jdbcTemplate, String mail){
         List<User> list=new ArrayList<>();
         list=jdbcTemplate.query("select * from shop.users where email='"+mail+"'",(rs, rowNum) ->
                 new User(
@@ -33,10 +33,28 @@ public class UserUtility {
                 )
         );
         if (list.size()!=0){
-            return false;
+            return list.get(0);
         }
         else{
-            return true;
+            return null;
+        }
+    }
+
+    public static User checkIfUserExistById(JdbcTemplate jdbcTemplate, String id){
+        List<User> list=new ArrayList<>();
+        list=jdbcTemplate.query("select * from shop.users where email='"+id+"'",(rs, rowNum) ->
+                new User(
+                        rs.getInt("id"),
+                        rs.getString("userName"),
+                        rs.getString("email"),
+                        rs.getString("password")
+                )
+        );
+        if (list.size()!=0){
+            return list.get(0);
+        }
+        else{
+            return null;
         }
     }
 

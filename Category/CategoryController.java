@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
+//verificat daca categoriile exista inainte de a face/intra in metode
+//cand categoriile se sterg se vor sterge si toate produsele din categoriile respective
 
 //This class it's responsible for all the listeners which involves the concept of category
 @Controller

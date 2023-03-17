@@ -11,6 +11,9 @@ import java.util.List;
 //This class it's responsible for all the listeners which involves the concept of product
 @Controller
 public class ProductController {
+    // verificat daca produsele exista si daca categoriile exista
+    //in cazul in care nu exista categorii se pot intoarce erori
+    //gasit aceste situatii posibile si rezolvat
 
     //On this line we create a new object that will help us in the future with the database connection
     private final JdbcTemplate jdbcTemplate;

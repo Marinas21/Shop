@@ -7,6 +7,8 @@ import java.util.List;
 
 //This class represents all the communications with the database on a specific cart
 public class CartData {
+    //se verifica daca cart exista
+    //cand cart ul se sterge se sterg si produsele din categoriile respective
 
     //This methode send a request to create a new cart for a specific user
     public static String createNewCart(JdbcTemplate jdbcTemplate, String userId){

@@ -1,0 +1,8 @@
+To do
+functionalitate de a plasa o comanda
+se iau toate datele iar apoi item din cart vor devenii item in comanda iar cart ul se goleste
+
+poti updata statusul comenzii iar user ul v a fii notificat pe e-mail
+
+cand user ul isi sterge cont ul se v-a crea o noua entitate ce v a ramane in sistem pentru a nu se sterge comanda
+la fel si in cazul produselor si al categoriilor

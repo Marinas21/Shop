@@ -1,5 +1,7 @@
 package com.Andrei.ShopWebService.User;
 
+import com.Andrei.ShopWebService.Cart.Cart;
+import com.Andrei.ShopWebService.Cart.CartData;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Controller;
@@ -7,12 +9,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.List;
 
 //This class is responsible for all the listeners which involves users
 @Controller
 public class UserController {
-
     //On this line we create a new object that will help us in the future with the database connection
     private final JdbcTemplate jdbcTemplate;
     //Here we instantiate a constructor which take a jdbctemplate as parameter and give it to the object
@@ -28,10 +30,14 @@ public class UserController {
     //then it will return the new user with the id
     @GetMapping("/newUser")
     @ResponseBody
-    public String newUser(@RequestParam(name="name")String name,
+    public User newUser(@RequestParam(name="name")String name,
                           @RequestParam(name="email")String mail,
                           @RequestParam(name="password")String password) throws SQLException {
-        return UserData.addNewUser(jdbcTemplate,name,mail,password);
+        User user=UserData.addNewUser(jdbcTemplate,name,mail,password);
+        System.out.println("user was created at: "+ LocalDate.now());
+        CartData.createNewCart(jdbcTemplate,user.getId()+"");
+        System.out.println("Cart was created at: "+ LocalDate.now());
+        return user;
     }
 
     //This method will return all the users with their info from the database
