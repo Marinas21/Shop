@@ -1,5 +1,8 @@
-package com.Andrei.ShopWebService.Product;
+package com.Andrei.ShopWebService.Controllers;
 
+import com.Andrei.ShopWebService.Product.Product;
+import com.Andrei.ShopWebService.Product.ProductData;
+import com.Andrei.ShopWebService.Product.ProductUtility;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Controller;

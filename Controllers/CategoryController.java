@@ -1,5 +1,8 @@
-package com.Andrei.ShopWebService.Category;
+package com.Andrei.ShopWebService.Controllers;
 
+import com.Andrei.ShopWebService.Category.Category;
+import com.Andrei.ShopWebService.Category.CategoryData;
+import com.Andrei.ShopWebService.Category.CategoryUtility;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Controller;

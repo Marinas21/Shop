@@ -1,7 +1,10 @@
-package com.Andrei.ShopWebService.User;
+package com.Andrei.ShopWebService.Controllers;
 
 import com.Andrei.ShopWebService.Cart.Cart;
 import com.Andrei.ShopWebService.Cart.CartData;
+import com.Andrei.ShopWebService.User.User;
+import com.Andrei.ShopWebService.User.UserData;
+import com.Andrei.ShopWebService.User.UserUtility;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Controller;
@@ -31,9 +34,9 @@ public class UserController {
     @GetMapping("/newUser")
     @ResponseBody
     public User newUser(@RequestParam(name="name")String name,
-                          @RequestParam(name="email")String mail,
-                          @RequestParam(name="password")String password) throws SQLException {
-        User user=UserData.addNewUser(jdbcTemplate,name,mail,password);
+                        @RequestParam(name="email")String mail,
+                        @RequestParam(name="password")String password) throws SQLException {
+        User user= UserData.addNewUser(jdbcTemplate,name,mail,password);
         System.out.println("user was created at: "+ LocalDate.now());
         CartData.createNewCart(jdbcTemplate,user.getId()+"");
         System.out.println("Cart was created at: "+ LocalDate.now());
